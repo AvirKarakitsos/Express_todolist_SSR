@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/app.css">
-    <title>Document</title>
+    <title>Todolist</title>
+    <script src="https://kit.fontawesome.com/e53f4fb6f8.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <h1>Todolist</h1>
+    <h1 class="title">Todolist</h1>
 
     <form action="/" method="POST">
         <label for="task">Tâche</label>
@@ -17,8 +19,12 @@
         <button type="submit">Ajouter</button>
     </form>
 
-    <div id="listusers"></div>
-
+    <div class="listContainer">
+        <i class="fa-solid fa-caret-up" style="display: none;"></i>
+        <i class="fa-solid fa-caret-down"></i>
+        <ul id="listusers"></ul>
+    </div>
+    
     <script src="js/script.js"></script>
 </body>
 </html>
