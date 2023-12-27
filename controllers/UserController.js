@@ -14,8 +14,9 @@ const store = async (req,res) => {
     try{
         const newUser = {
             id: data.users.length === 0 ? 1 : data.users[data.users.length-1].id + 1,
-            name: req.body.name,
-            country: req.body.country
+            task: req.body.task,
+            date: new Date(),
+            update: new Date()
         }
     
         data.setUsers([...data.users,newUser]);
@@ -24,7 +25,7 @@ const store = async (req,res) => {
             path.join(__dirname,'..','model','db.json'),
             JSON.stringify(data.users,null,2)
         )
-        res.redirect('/users');
+        res.redirect('/');
 
     }catch(err){
         res.status(500).json({'message ': err.message});
@@ -35,8 +36,8 @@ const updated = async (req,res) => {
     try{
         const user = data.users.find(input => input.id === parseInt(req.params.id));
        
-        user.name = req.body.name;
-        user.country = req.body.country;
+        user.task = req.body.task;
+        user.update = new Date();
 
         const filterArray = data.users.filter(input => input.id !== parseInt(req.params.id));
         const unsortedArray = [...filterArray,user];
@@ -46,7 +47,7 @@ const updated = async (req,res) => {
             path.join(__dirname,'..','model','db.json'),
             JSON.stringify(data.users,null,2)
         )
-        res.redirect('/users');
+        res.redirect('/');
 
     }catch(err){
         res.status(500).json({'message ': err.message});
@@ -62,7 +63,7 @@ const deleted = async (req, res) => {
             path.join(__dirname,'..','model','db.Json'),
             JSON.stringify(data.users,null,2)
         )
-        res.redirect('/users');
+        res.redirect('/');
 
     }catch(err){
         res.status(500).json({'message ': err.message});

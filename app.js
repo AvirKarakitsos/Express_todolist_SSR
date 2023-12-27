@@ -14,12 +14,12 @@ app.use(cors()); //autorise tous les sites
 
 app.use(express.urlencoded({extended: false})); //to use .body
 app.use(express.json()); //middleware for json
-app.use('/users',express.static(path.join(__dirname,'/public'))); //serve static files (css,txt,img)
+app.use('/',express.static(path.join(__dirname,'/public'))); //serve static files (css,txt,img)
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 //routes
-app.use('/users',require('./routes/web'));
+app.use('/',require('./routes/web'));
 app.use('/api/users',require('./routes/api'));
 
 //app.all('*') pour customise les differents formats (json,txt,html)
