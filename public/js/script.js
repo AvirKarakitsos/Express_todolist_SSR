@@ -9,7 +9,7 @@ function compareDates(date1,date2) {
     let ms = Math.abs(date1.getTime() - date2.getTime())
     let dist = 1000*60*60*24
     let days = Math.trunc(ms /dist)
-    if(days) return "il y a "+days+" jour(s)"
+    if(days) return "il y a "+days+" jours"
     else return "aujourd'hui"
     
     
@@ -22,9 +22,11 @@ async function getUsers(url) {
     if(users.length) {
         const now = new Date()
         listUsers.innerHTML = users.map(value => 
-            (`<li id="line${value.id}">
-                    ${compareDates(now,new Date(value.date))}\t${value.task}\t
-                    <span  onclick="editTask(${value.id})">editer</span>\t
+            (`<li id="line${value.id}"  class="task">
+                <p>${compareDates(now,new Date(value.date))}</p>
+                <p>${value.task}</p>
+                <div class="options">
+                    <span  onclick="editTask(${value.id})">editer</span>
                     <a href='#' onclick=
                         "event.preventDefault;
                         if(confirm('Voulez-vous supprimer le profil?')){
@@ -32,7 +34,8 @@ async function getUsers(url) {
                         };">
                     supprimer
                     <form id="form_${value.id}" action="/${value.id}?_method=DELETE" method="POST"></form></a>
-                </li>`)
+                </div>
+            </li>`)
         ).join('')
     } else {
         listUsers.innerHTML = "Pas de tâches"
@@ -55,16 +58,19 @@ async function editTask(id) {
 async function cancelEdit(id) {
     const user = await fetch(`http://localhost:3500/api/users/${id}`).then(res => res.json()).then(res => res[0])
     const element = document.getElementById(`line${id}`)
-    element.innerHTML = `<li id="line${user.id}">
-                            ${compareDates(new Date(),new Date(user.date))}\t${user.task}\t
-                            <span  onclick="editTask(${user.id})">editer</span>\t
-                            <a href='#' onclick=
-                                "event.preventDefault;
-                                if(confirm('Voulez-vous supprimer le profil?')){
-                                    document.getElementById('form_${user.id}').submit();
-                                };">
-                            supprimer
-                            <form id="form_${user.id}" action="/${user.id}?_method=DELETE" method="POST"></form></a>
+    element.innerHTML = `<li id="line${user.id}" class="task">
+                            <p>${compareDates(new Date(),new Date(user.date))}</p>
+                            <p>${user.task}</p>
+                            <div class="options">
+                                <span  onclick="editTask(${user.id})">editer</span>
+                                <a href='#' onclick=
+                                    "event.preventDefault;
+                                    if(confirm('Voulez-vous supprimer le profil?')){
+                                        document.getElementById('form_${user.id}').submit();
+                                    };">
+                                supprimer
+                                <form id="form_${user.id}" action="/${user.id}?_method=DELETE" method="POST"></form></a>
+                            </div>
                         </li>`
 }
 

@@ -10,19 +10,23 @@
 
 </head>
 <body>
-    <h1 class="title">Todolist</h1>
-
-    <form action="/" method="POST">
-        <label for="task">Tâche</label>
-        <input type="text" id="task" name="task" autocomplete="off">
-        
-        <button type="submit">Ajouter</button>
-    </form>
-
-    <div class="listContainer">
-        <i class="fa-solid fa-caret-up" style="display: none;"></i>
-        <i class="fa-solid fa-caret-down"></i>
-        <ul id="listusers"></ul>
+    <div class="mainContainer">
+        <h1 class="title">Todolist</h1>
+    
+        <form action="/" method="POST" class="addTask">
+            <label for="task" class="addTask__label">Tâche</label>
+            <input type="text" id="task" name="task" autocomplete="off">
+            
+            <button type="submit" class="addTask__submit">Ajouter</button>
+        </form>
+    
+        <main class="listContainer">
+            <div class="icones">
+                <i class="fa-solid fa-caret-up" style="display: none;"></i>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <ul id="listusers" class="list"></ul>
+        </main>
     </div>
     
     <script src="js/script.js"></script>

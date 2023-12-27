@@ -5,23 +5,57 @@
 }
 
 body{
-    background-color: rgba(192, 192, 192, 0.322);
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 h1,h2{
     margin:1rem 0;
 }
-img{
-    display: block;
-    margin: 1rem auto;
+
+.title {
+    text-align: center;
 }
 
-ul{
-    margin:1rem 0;
-}
-button{
-    display: block;
-    margin:1rem auto;
+.addTask {
+    text-align: center;
 }
 
+.addTask__label {
+    display: block;
+}
+
+.addTask__submit {
+    display: inline;
+    border: none;
+}
+.icones {
+    margin: 15px;
+    padding-left: 15px;
+}
+.icones i {
+    font-size: 25px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.task {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 150px 1fr 200px;
+    font-size: 17px;
+}
+
+.options{
+    display: flex;
+    column-gap: 15px;
+}
+
+.options a {
+    text-decoration: none;
+    color: #000;
+}
