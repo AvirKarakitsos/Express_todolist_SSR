@@ -15,7 +15,7 @@ const sortAsc = (req,res) => {
 
 const sortDesc = (req,res) => {
     let arr = data.users
-   arr.sort((a,b) => b.id - a.id)
+    arr.sort((a,b) => b.id - a.id)
     res.status(200).json(arr);
 }
 

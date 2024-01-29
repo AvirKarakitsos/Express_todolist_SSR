@@ -17,15 +17,27 @@
             <label for="task" class="addTask__label">Tâche</label>
             <input type="text" id="task" name="task" autocomplete="off">
             
-            <button type="submit" class="addTask__submit">Ajouter</button>
+            <button type="submit"><i class="icone fa-solid fa-square-check submit"></i></button>
         </form>
     
         <main class="listContainer">
-            <div class="icones">
-                <i class="fa-solid fa-caret-up" style="display: none;"></i>
-                <i class="fa-solid fa-caret-down"></i>
-            </div>
-            <ul id="listusers" class="list"></ul>
+            <table class="list">
+                <thead>
+                    <tr class="task">
+                        <th>
+                            date 
+                            <span class="icones">
+                                <i class="icone fa-solid fa-caret-up" style="display: none;"></i>
+                                <i class="icone fa-solid fa-caret-down"></i>
+                            </span>
+                        </th>
+                        <th  class="task">tâches</th>
+                        <th class="options">options</th>
+                    </tr>
+                </thead>
+                <tbody id="listusers">
+                </tbody>
+            </table>
         </main>
     </div>
     
