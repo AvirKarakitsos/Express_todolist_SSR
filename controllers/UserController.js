@@ -22,7 +22,7 @@ const store = async (req,res,next) => {
         data.setUsers([...data.users,newUser]);
     
         await fsPromises.writeFile(
-            path.joi(__dirname,'..','model','db.json'),
+            path.join(__dirname,'..','model','db.json'),
             JSON.stringify(data.users,null,2)
         )
         res.redirect('/');
