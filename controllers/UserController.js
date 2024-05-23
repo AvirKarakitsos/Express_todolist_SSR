@@ -60,7 +60,7 @@ const deleted = async (req, res) => {
         data.setUsers(filterArray);
 
         await fsPromises.writeFile(
-            path.join(__dirname,'..','model','db.Json'),
+            path.join(__dirname,'..','model','db.json'),
             JSON.stringify(data.users,null,2)
         )
         res.redirect('/');
