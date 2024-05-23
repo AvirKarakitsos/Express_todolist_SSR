@@ -10,7 +10,7 @@ const index = (req,res) => {
     res.sendFile(path.join(__dirname,'..','views','index.html'));
 }
 
-const store = async (req,res) => {
+const store = async (req,res,next) => {
     try{
         const newUser = {
             id: data.users.length === 0 ? 1 : data.users[data.users.length-1].id + 1,
@@ -22,13 +22,14 @@ const store = async (req,res) => {
         data.setUsers([...data.users,newUser]);
     
         await fsPromises.writeFile(
-            path.join(__dirname,'..','model','db.json'),
+            path.joi(__dirname,'..','model','db.json'),
             JSON.stringify(data.users,null,2)
         )
         res.redirect('/');
 
     }catch(err){
-        res.status(500).json({'message ': err.message});
+        return next(err)
+        //res.status(500).json({'message ': err.message});
     }
 }
 

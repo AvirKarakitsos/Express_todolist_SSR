@@ -2,7 +2,7 @@ const listUsers = document.getElementById('listusers');
 const sortDesc = document.querySelector('.fa-caret-down');
 const sortAsc = document.querySelector('.fa-caret-up')
 
-window.setTimeout(() => getUsers('http://localhost:3500/api/users'), 100);
+window.setTimeout(() => getUsers('http://localhost:3500/api/users'), 1000);
 //getUsers('http://localhost:3500/api/users')
 
 function compareDates(date1,date2) {
@@ -31,7 +31,7 @@ async function getUsers(url) {
                     <span  onclick="editTask(${value.id})"><i class="icone fa-solid fa-pen-to-square edit"></i></span>
                     <a href='#' onclick=
                         "event.preventDefault;
-                        if(confirm('Voulez-vous supprimer le profil?')){
+                        if(confirm('Voulez-vous supprimer cette tâche?')){
                             document.getElementById('form_${value.id}').submit();
                         };">
                         <i class="icone fa-solid fa-square-xmark delete"></i>
